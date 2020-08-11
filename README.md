@@ -1,4 +1,6 @@
-# React 환경설정
+# Rays React Boilerplate
+This is a boilerplate for React + Babel7 + Webpack4 + ESLint + Prettier
+ 
 
 # Getting Started
 
