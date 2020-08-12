@@ -1,6 +1,4 @@
-# Rays React Boilerplate
-This is a boilerplate for React + Babel7 + Webpack4 + ESLint + Prettier
- 
+# React 환경설정
 
 # Getting Started
 
@@ -33,13 +31,11 @@ react-webpack-babel-typescript/
 └── tsconfig.json
 ```
 
-Let’s start off by creating a new project directory and generate package.json file with the command below:
+Let’s start off by creating a new project directory and generate `package.json` file with the command below:
 
 ```jsx
 mkdir [Project Name] && cd [Project Name] && npm init -y
 ```
-
-The command above will create a directory called typescript-react and generates a package.json file inside the project directory.
 
 # Webpack
 
@@ -128,7 +124,7 @@ module.exports = merge(common, config);
 
 ### public/index.html
 
-This is the HTML template thats going to be used by the HTMLWebpackPlugin
+This is the HTML template thats going to be used by the **HTMLWebpackPlugin**
 
 ```
 <!DOCTYPE html>
@@ -147,7 +143,7 @@ This is the HTML template thats going to be used by the HTMLWebpackPlugin
 
 ### package.json
 
-Add the following scripts to package.json file
+Add the following scripts to `package.json` file
 
 ```
 {
