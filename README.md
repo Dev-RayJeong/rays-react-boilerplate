@@ -1,5 +1,5 @@
 # Rays React Boilerplate
-React + Babel7 + Webpack4 + ESLint & Prettier Boilerplate
+React + TypeScript + Babel7 + Webpack4 + ESLint & Prettier Boilerplate
 
 # Getting Started
 
