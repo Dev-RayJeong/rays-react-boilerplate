@@ -28,6 +28,29 @@ const config = {
             }
           }
         ]
+      },
+      {
+        test: /\.()$/, // File extentions regExp which is like Font, etc.
+        exclude: /node_modules/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            publicPath: './dist'
+          }
+        }
+      },
+      {
+        test: /\.()$/, // Image extentions regExp
+        exclude: /node_modules/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            name: '[name].[ext]?[hash]', // File name or file hash value
+            publicPath: './dist/', // File location over limit size after build
+            limit: 10000 // File size limit : 10000byte
+          }
+        }
       }
     ]
   },
