@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
+import Root from 'routes';
 
-const App: FC = () => <div>React + Webpack + Babel 7 + Typescript</div>;
+const App: FC = () => <Root />;
 
 export default App;

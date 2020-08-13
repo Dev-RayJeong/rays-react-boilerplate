@@ -1,4 +1,5 @@
 # Rays React Boilerplate
+
 React + TypeScript + Babel7 + Webpack4 + ESLint & Prettier Boilerplate
 
 # Getting Started
@@ -63,6 +64,7 @@ const config = {
   entry: path.join(__dirname, '../src/index'),
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
+		modules: ['node_modules', '../src']
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -262,13 +264,16 @@ npm i typescript
 
     /* Module Resolution Options */
     "moduleResolution": "node",            /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
-    "baseUrl": "./",                       /* Base directory to resolve non-absolute module names. */
+    "baseUrl": "./src",                       /* Base directory to resolve non-absolute module names. */
     "paths": {
-      "components/*": ["./src/components/*"],
-      "containers/*": ["./src/containers/*"],
-      "assets/*": ["./src/assets/*"],
-      "constants/*": ["./constants/*"],
-      "utils/*": ["./src/utils/*"]
+			// "components/*": ["components"],
+      // "containers/*": ["containers/*"],
+      // "assets/*": ["assets/*"],
+      // "constants/*": ["constants/*"],
+      // "utils/*": ["utils/*"],
+      // "routes/*": ["routes/*"],
+      // "pages/*": ["pages/*"]
+      // "@/*": ["src/*"]
     },                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
     // "typeRoots": [],                       /* List of folders to include type definitions from. */
@@ -377,6 +382,7 @@ npm install -D prettier eslint-config-prettier eslint-plugin-prettier
     },
     "import/resolver": {
       "node": {
+				"moduleDirectory": ["node_modules", "src/"],
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
@@ -523,6 +529,67 @@ render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+```
+
+# File Loader and URL Loader
+
+Install File Loader and URL Loader
+
+```jsx
+npm i -D file-loader url-loader
+```
+
+### config/webpack.common.js
+
+```jsx
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const config = {
+
+  // ...entry, resolve
+
+  module: {
+    rules: [
+			// ...babel-loader, css-loader
+      {
+        test: /\.()$/,  // File extentions regExp which is like Font, etc.
+        exclude: /node_modules/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            publicPath: './dist'
+          }
+        }
+      },
+      {
+        test: /\.()$/, // Image extentions regExp
+        exclude: /node_modules/,
+        use: {
+          loader: 'url-loader',
+          options: {
+						name: '[name].[ext]?[hash]', // File name or file hash value
+            publicPath: './dist/', // File location over limit size after build
+	          limit: 10000 // File size limit : 10000byte
+          }
+        }
+      }
+    ],
+  },
+
+  // ...plugins
+};
+
+module.exports = config;
+```
+
+# React Router Dom
+
+Install File **react-router-dom** and types
+
+```jsx
+npm i -D react-router-dom @types/react-router-dom
 ```
 
 # References

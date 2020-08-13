@@ -4,7 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = {
   entry: ['@babel/polyfill', path.join(__dirname, '../src/index')],
   resolve: {
-    extensions: ['.ts', '.tsx', '.js']
+    extensions: ['.ts', '.tsx', '.js'],
+    modules: ['node_modules', '../src']
   },
   module: {
     rules: [
